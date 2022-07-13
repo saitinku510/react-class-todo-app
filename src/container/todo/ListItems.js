@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 function ListItems(props) {
@@ -5,8 +6,8 @@ function ListItems(props) {
     const listItems = items.map(e => {
         return(
             <div className='list' key={e.key}>
-                <input value={e.text} id={e.key} type="text" onChange={props.handleEditChange} disabled={props.isDisabled}/>
-                <button onClick={props.editItem(e.key)}>Edit</button>
+                <input value={e.text} id={e.key} type="text" onChange={(event) => {props.setUpdate(event.target.value, e.key)}}/>
+                {/* <button onClick={(event) => {props.setUpdate(event.target.value, e.key)}}>Edit</button> */}
                 <button onClick={() => props.deleteItem(e.key)}>Del</button>
             </div>
         )

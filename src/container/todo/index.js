@@ -12,14 +12,11 @@ class Todo extends Component {
         text: "",
         key: "",
       },
-      editValue: "",
-      isDisabled: true,
     };
     this.handleChange = this.handleChange.bind(this);
     this.addList = this.addList.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
-    this.handleEditChange = this.handleEditChange.bind(this);
-    this.editItem = this.editItem.bind(this);
+    this.setUpdate = this.setUpdate.bind(this);
   }
 
   handleChange = (e) => {
@@ -54,18 +51,19 @@ class Todo extends Component {
     });
   };
 
-  handleEditChange = (e) => {
-    this.setState({
-      editValue: e.target.value,
+  setUpdate = (text, key) => {
+    const items = this.state.items;
+    items.map((item) => {
+      if (item.key === key) {
+        item.text = text;
+      }
+    console.log(item)
     });
-    console.console.log(e);
+    this.setState({
+      items: items,
+    });
   };
 
-  editItem = (key) => {
-    this.setState({
-      isDisabled : false
-    })
-  };
 
   render() {
     return (
@@ -84,10 +82,9 @@ class Todo extends Component {
           <h2>Tasks Todo</h2>
           <ListItems
             items={this.state.items}
-            editItem={this.editItem}
-            handleEditChange={this.handleEditChange}
             deleteItem={this.deleteItem}
-            disabled={this.state.isDisabled}
+            setUpdate={this.setUpdate}
+            // inputChangeHandle={this.inputChangeHandle}
           ></ListItems>
         </div>
       </div>

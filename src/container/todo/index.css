@@ -29,6 +29,7 @@
     flex-grow: 1;
     background-color: #fff;
     color: black;
+    outline: none;
   }
   button{
       background-color: #b7b7b7;
