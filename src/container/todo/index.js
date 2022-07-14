@@ -12,6 +12,7 @@ class Todo extends Component {
         text: "",
         key: "",
       },
+      editText: "Edit",
     };
     this.handleChange = this.handleChange.bind(this);
     this.addList = this.addList.bind(this);
@@ -62,6 +63,19 @@ class Todo extends Component {
     });
   };
 
+  handleChangeText = (e) => {
+    const textE = e.target.innerText;
+    if (textE === "Edit") {
+      this.setState({
+        editText: "Save",
+      }
+      )
+    }else{
+      this.setState({
+        editText: "Edit",
+      })
+    }
+  };
 
   render() {
     return (
@@ -82,7 +96,8 @@ class Todo extends Component {
             items={this.state.items}
             deleteItem={this.deleteItem}
             setUpdate={this.setUpdate}
-            // inputChangeHandle={this.inputChangeHandle}
+            handleChangeText={this.handleChangeText}
+            editText={this.state.editText}
           ></ListItems>
         </div>
       </div>
